@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  wpp-web:
+    container_name: "wpp-web"
+    build:
+      context: ./docker
+      dockerfile: web.dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./lumen:/app
+
+  wpp-rabbit:
+    container_name: "wpp-rabbit"
+    build:
+      context: ./docker
+      dockerfile: rabbitmq.dockerfile
+    ports:
+      - 5672:5672
+      - 15672:15672
