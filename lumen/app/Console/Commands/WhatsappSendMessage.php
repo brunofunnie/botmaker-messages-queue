@@ -14,9 +14,11 @@ class WhatsappSendMessage extends Command
     {
         $data = [
             'src_number' => '+5515996730586',
-            'dst_number' => '+5515981187302',
+            'dst_number' => '5515981187302',
             'message' => 'Ta lá menininho!'
         ];
+
+        Log::info($data);
 
         event(new \App\Events\WhatsappSendMessageEvent($data));
     }

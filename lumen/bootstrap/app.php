@@ -24,10 +24,22 @@ $app = new Laravel\Lumen\Application(
 );
 
 $app->configure('queue');
+$app->configure('mail');
 
 // $app->withFacades();
 
 // $app->withEloquent();
+
+
+/*
+|--------------------------------------------------------------------------
+| Aliases
+|--------------------------------------------------------------------------
+|
+*/
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +109,7 @@ $app->configure('app');
 // $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
 $app->register(VladimirYuldashev\LaravelQueueRabbitMQ\LaravelQueueRabbitMQServiceProvider::class);
+$app->register(Illuminate\Mail\MailServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

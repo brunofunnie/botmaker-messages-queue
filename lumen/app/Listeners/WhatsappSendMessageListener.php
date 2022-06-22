@@ -13,12 +13,13 @@ class WhatsappSendMessageListener implements ShouldQueue
         //
     }
 
-    public function handle(WhatsappSendMessageEvent $event)
+    public function handle($event)
     {
-        $data = json_decode(json_encode($event));
+        $eventData = json_decode(json_encode($event));
         $wpp = new BotmakerWhatsappService();
-        $wpp->sendMessage($data['src_number'], $data['dst_number'], $data['message']);
 
-        Log::info("Whatsapp message sent successfuly! " . json_encode($event));
+        Log::info("Event data" . json_encode($eventData->data));
+
+        $wpp->sendMessage($eventData->data->src_number, $eventData->data->dst_number, $eventData->data->message);
     }
 }
