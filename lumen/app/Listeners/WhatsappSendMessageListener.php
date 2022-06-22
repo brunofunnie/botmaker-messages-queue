@@ -20,6 +20,6 @@ class WhatsappSendMessageListener implements ShouldQueue
 
         Log::info("Event data" . json_encode($eventData->data));
 
-        $wpp->sendMessage($eventData->data->src_number, $eventData->data->dst_number, $eventData->data->message);
+        $wpp->sendToken($eventData->data->dst_number, $eventData->data->token);
     }
 }

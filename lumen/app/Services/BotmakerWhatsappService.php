@@ -13,14 +13,19 @@ class BotmakerWhatsappService
         ]);
     }
 
-    public function sendMessage(string $originNumber, string $destinationNumber, string $message): bool
+    public function sendToken(string $destinationNumber, string $token): bool
     {
         $data = [
             "chatPlatform" => "whatsapp",
-            "chatChannelNumber" => '5515996730586',
+            "chatChannelNumber" => env('BOTMAKER_WHASTAPP_CHANNEL_NUMBER'),
             "platformContactId" => $destinationNumber,
-            "messageText" => $message
+            "ruleNameOrId" => "template_token",
+            "params" => [
+                "imageURL" => $token
+            ]
         ];
+
+        Log::info(json_encode($data));
 
         $response = $this->http->withBody(json_encode($data, true), 'application/json')->post(env('BOTMAKER_WHASTAPP_API_URL', ''));
 

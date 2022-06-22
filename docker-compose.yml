@@ -18,3 +18,10 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+
+  wpp-mailhog:
+    image: mailhog/mailhog
+    container_name: "wpp-mailhog"
+    ports:
+      - 8025:8025
+      - 1025:1025
