@@ -27,7 +27,7 @@ class BotmakerWhatsappService
 
         Log::info(json_encode($data));
 
-        $response = $this->http->withBody(json_encode($data, true), 'application/json')->post(env('BOTMAKER_WHASTAPP_API_URL', ''));
+        $response = $this->http->withBody(json_encode($data, true), 'application/json')->post(env('BOTMAKER_WHASTAPP_API_INTENT_URL', ''));
 
         if (!$response->successful()) {
             Log::error('Whatsapp >> Não foi possível enviar mensagem ' . $response->body());
