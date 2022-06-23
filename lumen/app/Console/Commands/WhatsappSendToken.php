@@ -22,6 +22,6 @@ class WhatsappSendToken extends Command
 
         Log::info($data);
 
-        event(new \App\Events\WhatsappSendMessageEvent($data));
+        event(new \App\Events\WhatsappSendTokenEvent($data));
     }
 }

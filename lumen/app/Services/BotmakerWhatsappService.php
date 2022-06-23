@@ -19,15 +19,15 @@ class BotmakerWhatsappService
             "chatPlatform" => "whatsapp",
             "chatChannelNumber" => env('BOTMAKER_WHASTAPP_CHANNEL_NUMBER'),
             "platformContactId" => $destinationNumber,
-            "ruleNameOrId" => "template_token",
+            "ruleNameOrId" => "token_validacao",
             "params" => [
-                "imageURL" => $token
+                "loginToken" => $token
             ]
         ];
 
-        Log::info(json_encode($data));
-
-        $response = $this->http->withBody(json_encode($data, true), 'application/json')->post(env('BOTMAKER_WHASTAPP_API_INTENT_URL', ''));
+        $response = $this->http
+                        ->withBody(json_encode($data, true), 'application/json')
+                        ->post(env('BOTMAKER_WHASTAPP_API_INTENT_URL', ''));
 
         if (!$response->successful()) {
             Log::error('Whatsapp >> Não foi possível enviar mensagem ' . $response->body());

@@ -3,10 +3,10 @@ namespace App\Listeners;
 
 use Log;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Events\WhatsappSendMessageEvent;
+use App\Events\WhatsappSendTokenEvent;
 use App\Services\BotmakerWhatsappService;
 
-class WhatsappSendMessageListener implements ShouldQueue
+class WhatsappSendTokenListener implements ShouldQueue
 {
     public function __construct()
     {

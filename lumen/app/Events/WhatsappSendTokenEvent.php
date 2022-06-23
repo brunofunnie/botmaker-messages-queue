@@ -1,7 +1,7 @@
 <?php
 namespace App\Events;
 
-class WhatsappSendMessageEvent extends Event
+class WhatsappSendTokenEvent extends Event
 {
     public $data;
 

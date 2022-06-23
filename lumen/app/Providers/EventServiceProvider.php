@@ -15,8 +15,8 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\ExampleEvent::class => [
             \App\Listeners\ExampleListener::class,
         ],
-        \App\Events\WhatsappSendMessageEvent::class => [
-            \App\Listeners\WhatsappSendMessageListener::class,
+        \App\Events\WhatsappSendTokenEvent::class => [
+            \App\Listeners\WhatsappSendTokenListener::class,
         ]
     ];
 
